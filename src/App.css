@@ -1,0 +1,90 @@
+:root {
+  background: radial-gradient(#050526 0%, black 90%) -20vw 10vh no-repeat black;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  perspective: 340px;
+  overflow: hidden;
+}
+
+.centered {
+  position: absolute;
+  left: 50vw;
+  top: 20vh;
+  transform: translateX(-50%) translateY(-50%) rotateX(15deg);
+  text-align: center;
+}
+
+.cyberspace {
+  position: relative;
+  font-family: 'Cyberspace-Raceway-Back', sans-serif;
+  font-size: 3rem;
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(135, 209, 228, 1);
+  -webkit-text-stroke-width: 0.1rem;
+  -webkit-text-stroke-color: rgba(135, 209, 228, 1);
+  filter: url(#extrude);
+}
+
+.stars {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  box-shadow: 100px 200px hsl(90, 0, 75),
+              50px -150px hsl(90, 0, 80),
+              -200px 100px hsl(90, 0, 90),
+              0px 0px hsl(90, 0, 95); /* Add more star positions manually */
+  animation: fly 10s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.stars::before, .stars::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  box-shadow: inherit;
+}
+
+.stars::before {
+  transform: translateZ(-300px);
+  animation: fade1 10s linear infinite;
+}
+
+.stars::after {
+  transform: translateZ(-600px);
+  animation: fade2 10s linear infinite;
+}
+
+@keyframes fly {
+  from {
+    transform: translateZ(0px);
+  }
+  to {
+    transform: translateZ(300px);
+  }
+}
+
+@keyframes fade1 {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
